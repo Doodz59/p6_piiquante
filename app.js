@@ -11,7 +11,7 @@ const userRoutes = require('./routes/User');
 const mongoose = require('mongoose');
 
 const { $where } = require('./models/sauce');
-mongoose.connect('mongodb+srv://john:DOE@cluster0.hanezzk.mongodb.net/?retryWrites=true&w=majority',
+mongoose.connect(process.env.DB_KEY,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -32,4 +32,4 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 module.exports = app; // on exporte la constante pour qu'on puisse s'en servir partout
 
 //SECURITY
-//Dotenv / helmet / cryptojs / jswt / validation-input / 
+//Dotenv / helmet / jswt / validation-input / 
